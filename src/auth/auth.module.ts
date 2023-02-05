@@ -3,14 +3,14 @@ import { Module } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
-import { JwtStrategy } from './strategy';
+import { JwtStrategy, jwtRefresh } from './strategy';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from 'src/user/Entity/user.entity';
 
 @Module({
-  imports: [JwtModule.register({}),TypeOrmModule.forFeature([User])],
+  imports: [JwtModule.register({}), TypeOrmModule.forFeature([User])],
   controllers: [AuthController],
-  providers: [AuthService,JwtStrategy],
-  exports:[AuthService]
+  providers: [AuthService, JwtStrategy, jwtRefresh],
+  exports: [AuthService],
 })
 export class AuthModule {}
