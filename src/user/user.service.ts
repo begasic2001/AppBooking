@@ -74,6 +74,8 @@ export class UserService {
           context: {
             name: userData.name,
           },
+          html: `<a href="http://localhost:9000/password/reset/?token=true"> Reset Password </a>`,
+          // replyTo:`<a href="http://localhost:9000/password/reset/?token=true"> Reset Password </a>`
         })
         .then((data) => {
           console.log(data);
