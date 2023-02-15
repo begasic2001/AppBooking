@@ -1,15 +1,12 @@
-import { Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, PrimaryGeneratedColumn ,CreateDateColumn,UpdateDateColumn,DeleteDateColumn} from 'typeorm';
 
 export abstract class BaseEntity {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
-
-  @Column()
+  @CreateDateColumn({ name: 'created_at', type: 'timestamp', nullable: true })
   createdAt: Date;
 
-  @Column()
+  @UpdateDateColumn({ name: 'updated_at', type: 'timestamp', nullable: true })
   updatedAt: Date;
 
-  @Column()
+  @DeleteDateColumn({ name: 'deleted_at', type: 'timestamp', nullable: true })
   deletedAt: Date;
 }

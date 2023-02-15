@@ -1,3 +1,8 @@
+import { Sight } from './entity/sight.entity';
+import { Tour } from './entity/tour.entity';
+import { Transport } from './entity/transport.entity';
+import { City } from './entity/city.entity';
+import { Country } from './entity/countries.entity';
 import { User } from 'src/entity/user.entity';
 import { Module } from '@nestjs/common';
 import { AuthModule } from './auth/auth.module';
@@ -7,7 +12,6 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { MailerModule } from '@nestjs-modules/mailer';
 import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handlebars.adapter';
 import { join } from 'path';
-console.log(__dirname);
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -20,8 +24,8 @@ console.log(__dirname);
       username: 'root',
       password: '',
       database: 'Tour',
-      entities: [User],
-      // synchronize: true,
+      entities: [User, Country, City, Transport, Tour,Sight],
+      synchronize: true,
     }),
     MailerModule.forRootAsync({
       useFactory: () => ({
