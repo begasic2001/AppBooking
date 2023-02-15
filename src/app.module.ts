@@ -12,6 +12,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { MailerModule } from '@nestjs-modules/mailer';
 import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handlebars.adapter';
 import { join } from 'path';
+import { CountryModule } from './country/country.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -25,7 +26,7 @@ import { join } from 'path';
       password: '',
       database: 'Tour',
       entities: [User, Country, City, Transport, Tour,Sight],
-      synchronize: true,
+      synchronize: false,
     }),
     MailerModule.forRootAsync({
       useFactory: () => ({
@@ -52,6 +53,7 @@ import { join } from 'path';
     }),
     AuthModule,
     UserModule,
+    CountryModule,
   ],
 })
 export class AppModule {}
